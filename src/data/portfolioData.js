@@ -102,7 +102,7 @@ export const projectsData = [
     ],
     stack: ["PHP", "Laravel", "PostgreSQL", "Laravel Queues", "AWS S3", "jQuery", "AJAX"],
     github: "#",
-    live: "#",
+    live: "private",
     badge: "Architecture Highlight",
   },
   {
@@ -120,7 +120,7 @@ export const projectsData = [
     ],
     stack: ["PHP", "Ratchet", "WebSockets", "JavaScript", "Nginx Proxy"],
     github: "#",
-    live: "#",
+    live: "private",
     badge: "High Concurrency",
   },
   {
@@ -138,7 +138,7 @@ export const projectsData = [
     ],
     stack: ["PHP", "Laravel", "Node.js", "Express.js", "Telegram Bot API", "Webhooks"],
     github: "#",
-    live: "#",
+    live: "private",
     badge: "Fintech & Automation",
   },
   {
@@ -173,7 +173,7 @@ export const projectsData = [
       "Comprehensive product inventory, order lifecycle state machine, and customer dashboards",
     ],
     stack: ["Node.js", "Express.js", "React.js", "MySQL", "Razorpay"],
-    github: "#",
+    github: "https://github.com/periyaraja-s/E-Commerce-Platform",
     live: "#",
     badge: "Full-Stack System",
   },

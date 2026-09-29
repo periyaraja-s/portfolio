@@ -12,7 +12,7 @@ export default function Hero({ onOpenResume }) {
         </div>
 
         {/* Eyebrow */}
-        <div className="editorial-label">
+        <div className="editorial-label d-none">
           <span>00 · BACKEND ARCHITECTURE & SYSTEMS</span>
         </div>
 

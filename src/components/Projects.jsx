@@ -109,22 +109,24 @@ export default function Projects({ onSelectProject }) {
                       </span>
                     )}
 
-                    {project.live !== '#' ? (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="project-link-action"
-                        title="View Live Demo"
-                      >
-                        <i className="bi bi-box-arrow-up-right"></i>
-                        <span>Live Demo</span>
-                      </a>
-                    ) : (
-                      <span className="text-dim" style={{ fontSize: '0.82rem' }}>
-                        Live Demo Coming
-                      </span>
-                    )}
+                      { project.live == 'private' ? (
+                        <span></span>
+                      ) : project.live !== '#' ? (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="project-link-action"
+                          title="View Live Demo"
+                        >
+                          <i className="bi bi-box-arrow-up-right"></i>
+                          <span>Live Demo</span>
+                        </a>
+                      ) : (
+                        <span className="text-dim" style={{ fontSize: '0.82rem' }}>
+                          Live Demo Coming
+                        </span>
+                      )}
                   </div>
 
                   <button

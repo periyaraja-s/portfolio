@@ -16,6 +16,7 @@
 
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
+  --bs-secondary-color: #94a3b8;
   --text-dim: #64748b;
 
   --accent: #3b82f6;
@@ -47,6 +48,7 @@
 
   --text-main: #0f172a;
   --text-muted: #475569;
+  --bs-secondary-color: #475569;
   --text-dim: #64748b;
 
   --accent: #2563eb;
