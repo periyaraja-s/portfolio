@@ -1,19 +1,90 @@
-import React,{useEffect,useState} from 'react';
-import {createRoot} from 'react-dom/client';
+import React, { useEffect, useState } from 'react';
+import { createRoot } from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './styles.css';
 
-const projects=[
- {title:'E-Commerce Platform',description:'A full-stack e-commerce application with separate customer and admin workflows, authentication, product and category management, orders, checkout and Razorpay test payments.',stack:['Node.js','Express.js','React.js','MySQL','Razorpay'],github:'#',live:'#'},
- {title:'Apparel ERP – Production Bundle Management System',description:'An ERP-focused application for production bundle management, translating apparel production workflows into a structured database-driven application.',stack:['PHP','Laravel','MySQL'],github:'https://github.com/periyaraja-s/Production-Bundle-Management-System',live:'#'}
-];
-const skills={Backend:['PHP','Laravel','CodeIgniter','Node.js','Express.js','REST APIs'],Database:['MySQL','PostgreSQL','MongoDB','NoSQL'],Frontend:['JavaScript','React.js','HTML','CSS','Bootstrap'],Tools:['Git','GitHub','Postman']};
-function App(){const[dark,setDark]=useState(true);useEffect(()=>{document.documentElement.dataset.theme=dark?'dark':'light'},[dark]);return <><nav className="navbar navbar-expand-lg fixed-top portfolio-nav"><div className="container"><a className="navbar-brand fw-bold" href="#home">PERIYARAJA<span>.</span></a><div className="d-flex align-items-center gap-2"><a className="nav-link d-none d-md-block" href="#projects">Projects</a><a className="nav-link d-none d-md-block" href="#contact">Contact</a><button className="theme-btn" onClick={()=>setDark(!dark)}><i className={`bi ${dark?'bi-sun':'bi-moon-stars'}`}></i></button></div></div></nav><main id="home">
-<section className="hero section-pad"><div className="container"><div className="row align-items-center min-vh-100"><div className="col-lg-9"><p className="eyebrow">BACKEND DEVELOPER · 3.5+ YEARS</p><h1>Building backend systems that turn <span>business requirements</span> into working products.</h1><p className="hero-copy">Backend Developer with 3.5+ years of experience building web applications, REST APIs, database-driven systems, authentication workflows and business logic using PHP, Laravel, Node.js and Express.js.</p><div className="d-flex flex-wrap gap-3 mt-4"><a className="btn btn-primary-custom" href="#projects">View Projects <i className="bi bi-arrow-down-right"></i></a><a className="btn btn-outline-custom" href="mailto:periyaraja1706@gmail.com">Contact Me</a></div></div></div></div></section>
-<section id="about" className="section-pad"><div className="container"><div className="section-label">01 · ABOUT</div><div className="row g-5"><div className="col-lg-7"><h2>Backend development with a <span>practical approach.</span></h2><p className="lead-text">I’m a Backend Developer with 3.5+ years of experience developing and maintaining web applications using PHP, Laravel, Node.js and Express.js.</p><p className="muted-text">My primary focus is backend development, including API development, authentication, database design, business logic, integrations and application workflows. I also have hands-on experience working with React and JavaScript, allowing me to connect frontend applications with backend services when needed.</p></div><div className="col-lg-5"><div className="stat-card"><strong>3.5+</strong><span>Years Experience</span><strong>REST</strong><span>API Development</span><strong>SQL +</strong><span>NoSQL Databases</span></div></div></div></div></section>
-<section id="skills" className="section-pad alt-section"><div className="container"><div className="section-label">02 · SKILLS</div><div className="row g-4">{Object.entries(skills).map(([group,items])=><div className="col-md-6 col-lg-3" key={group}><div className="skill-card"><h3>{group}</h3><ul>{items.map(x=><li key={x}>{x}</li>)}</ul></div></div>)}</div></div></section>
-<section id="experience" className="section-pad"><div className="container"><div className="section-label">03 · EXPERIENCE</div><div className="experience-line"><div><h3>Software Developer</h3><p className="muted-text">3.5+ years · Backend & Web Application Development</p></div><p className="muted-text">PHP · Laravel · Node.js · React · Databases · REST APIs</p></div></div></section>
-<section id="projects" className="section-pad alt-section"><div className="container"><div className="section-label">04 · PROJECTS</div><div className="row g-4">{projects.map((p,i)=><div className="col-lg-6" key={p.title}><article className="project-card"><div className="project-number">0{i+1}</div><h3>{p.title}</h3><p>{p.description}</p><div className="tags">{p.stack.map(t=><span key={t}>{t}</span>)}</div><div className="project-links">{p.live==='#'?<span className="coming">Live demo coming</span>:<a href={p.live}>Live Demo</a>}{p.github==='#'?<span className="coming">GitHub coming</span>:<a href={p.github} target="_blank" rel="noreferrer">GitHub <i className="bi bi-github"></i></a>}</div></article></div>)}</div></div></section>
-<section id="contact" className="section-pad contact-section"><div className="container"><div className="section-label">05 · CONTACT</div><h2>Let's build something <span>useful.</span></h2><p className="hero-copy">Open to backend development opportunities, freelance projects and software development work.</p><div className="contact-links"><a href="mailto:periyaraja1706@gmail.com">periyaraja1706@gmail.com</a><a href="https://github.com/periyaraja-s" target="_blank" rel="noreferrer">GitHub <i className="bi bi-arrow-up-right"></i></a></div></div></section></main><footer className="footer"><div className="container d-flex justify-content-between flex-wrap gap-2"><span>© 2026 Periyaraja S</span><span>Backend Developer</span></div></footer></>}
-createRoot(document.getElementById('root')).render(<App/>);
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Experience from './components/Experience';
+import ArchitectureSpotlight from './components/ArchitectureSpotlight';
+import Projects from './components/Projects';
+import Skills from './components/Skills';
+import Education from './components/Education';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import ResumeModal from './components/ResumeModal';
+import ProjectDetailModal from './components/ProjectDetailModal';
+
+function App() {
+  const [dark, setDark] = useState(() => {
+    const saved = localStorage.getItem('portfolio-theme');
+    return saved !== null ? saved === 'dark' : true;
+  });
+
+  const [activeProject, setActiveProject] = useState(null);
+  const [resumeOpen, setResumeOpen] = useState(false);
+  const [toast, setToast] = useState(null);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    localStorage.setItem('portfolio-theme', dark ? 'dark' : 'light');
+  }, [dark]);
+
+  const showToast = (message) => {
+    setToast(message);
+    setTimeout(() => {
+      setToast((current) => (current === message ? null : current));
+    }, 3200);
+  };
+
+  return (
+    <>
+      <Navbar
+        dark={dark}
+        setDark={setDark}
+        onOpenResume={() => setResumeOpen(true)}
+      />
+
+      <main id="main-content">
+        <Hero onOpenResume={() => setResumeOpen(true)} />
+        <About onOpenResume={() => setResumeOpen(true)} />
+        <Experience />
+        <ArchitectureSpotlight />
+        <Projects onSelectProject={(p) => setActiveProject(p)} />
+        <Skills />
+        <Education />
+        <Contact onShowToast={showToast} />
+      </main>
+
+      <Footer onOpenResume={() => setResumeOpen(true)} />
+
+      {activeProject && (
+        <ProjectDetailModal
+          project={activeProject}
+          onClose={() => setActiveProject(null)}
+        />
+      )}
+
+      {resumeOpen && (
+        <ResumeModal
+          onClose={() => setResumeOpen(false)}
+          onShowToast={showToast}
+        />
+      )}
+
+      {toast && (
+        <div className="toast-floating" role="status" aria-live="polite">
+          <i className="bi bi-check-circle-fill text-success"></i>
+          <span>{toast}</span>
+        </div>
+      )}
+    </>
+  );
+}
+
+const rootEl = document.getElementById('root');
+if (rootEl) {
+  createRoot(rootEl).render(<App />);
+}

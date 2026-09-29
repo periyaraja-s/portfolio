@@ -1,0 +1,8 @@
+{
+  "name": "Periyaraja S - Backend Developer Portfolio",
+  "description": "Periyaraja S - Backend Developer portfolio showcasing web applications, REST APIs, and database-driven systems.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
