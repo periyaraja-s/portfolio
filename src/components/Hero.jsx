@@ -52,16 +52,6 @@ export default function Hero({ onOpenResume }) {
           </a>
         </div>
 
-        {/* Metrics Grid with Tabular Numerals (Claim-to-Proof Adjacency) */}
-        <div className="metrics-grid">
-          {keyMetrics.map((metric) => (
-            <div key={metric.label} className="metric-card">
-              <div className="metric-number font-mono-tabular">{metric.value}</div>
-              <div className="metric-label">{metric.label}</div>
-              <div className="metric-subtext">{metric.subtext}</div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
