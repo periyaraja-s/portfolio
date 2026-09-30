@@ -16,22 +16,17 @@ export const keyMetrics = [
   {
     value: "3.5+",
     label: "Years Experience",
-    subtext: "Backend & Web Architecture",
+    subtext: "Backend & Web Development",
   },
   {
-    value: "50k+",
-    label: "Records / Report",
-    subtext: "Optimised with Laravel Queues & S3",
+    value: "20+",
+    label: "Projects Worked On",
+    subtext: "Across multiple business domains",
   },
   {
-    value: "10k+",
-    label: "Concurrent Users",
-    subtext: "Handled by WebSocket Engine",
-  },
-  {
-    value: "100+",
-    label: "Active Accounts",
-    subtext: "Multi-branch ERP deployments",
+    value: "10+",
+    label: "Team Members Guided",
+    subtext: "Mentoring & day-to-day technical support",
   },
 ];
 
