@@ -1,5 +1,5 @@
 import React from 'react';
-import { personalData } from '../data/portfolioData';
+import { personalData, keyMetrics } from '../data/portfolioData';
 
 export default function Hero({ onOpenResume }) {
   return (
@@ -50,6 +50,17 @@ export default function Hero({ onOpenResume }) {
             <i className="bi bi-github"></i>
             <span>GitHub</span>
           </a>
+        </div>
+
+        {/* Experience Metrics */}
+        <div className="metrics-grid">
+          {keyMetrics.map((metric) => (
+            <div key={metric.label} className="metric-card">
+              <div className="metric-number font-mono-tabular">{metric.value}</div>
+              <div className="metric-label">{metric.label}</div>
+              <div className="metric-subtext">{metric.subtext}</div>
+            </div>
+          ))}
         </div>
 
       </div>
