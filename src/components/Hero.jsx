@@ -1,5 +1,5 @@
 import React from 'react';
-import { personalData, keyMetrics } from '../data/portfolioData';
+import { personalData } from '../data/portfolioData';
 
 export default function Hero({ onOpenResume }) {
   return (
